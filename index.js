@@ -75,6 +75,7 @@ class Person {
     - A car which runs out of `fuel` while driving can't drive any more distance:
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
+console.log('%c TASK 2', 'font-weight: bold');
 
 class Car {
   constructor(model, milesPerGallon){
@@ -154,7 +155,20 @@ class Instructor extends Lambdasian {
   grade (student, subject) {
     return `${student.name} recieves a perfect score on ${subject}`
   }
+  newGrade(student){
+    let randomNum = Math.floor(Math.random() * 100 + 1)
+    if(randomNum <= 50){
+      student.grade -= Math.floor(Math.random() * 10 + 1)
+      return student.grade;
+    }else if(randomNum > 50){
+      student.grade += Math.floor(Math.random() * 10 + 1)
+      return student.grade
+    }
+  }
 }
+
+const brit = new Instructor({name: 'Brit'});
+
 /*
   TASK 5
     - Write a Student class extending Lambdasian.
@@ -176,6 +190,7 @@ class Student extends Lambdasian {
     this.previousBackground = attr.previousBackground;
     this.className = attr.className;
     this.favSubjects = attr.favSubjects;
+    this.grade = 79;
   }
   listSubjects(){
     return `Loving ${this.favSubjects}`
@@ -186,11 +201,26 @@ class Student extends Lambdasian {
   sprintChallenge(subject){
     return `${this.name} has begun sprint challenge on ${subject}`
   }
+  graduate(){
+    if(this.grade >= 70){
+      return `You have graduated Lambda School!! Congratulations!!!`
+    }else if(this.grade < 70){
+      return `You're so close! A little more work and you'll make it!`
+    }
+  }
 }
 
 const kade = new Student({name:'kade'})
 console.log(kade.PRAssignment('quik mafs'));
 console.log(kade.sprintChallenge('quik mafs'));
+console.log('%c STRETCH', 'font-weight: bold');
+console.log(brit.newGrade(kade));
+console.log(brit.newGrade(kade));
+console.log(kade.graduate());
+// console.log(brit.newGrade(kade));
+// console.log(brit.newGrade(kade));
+// console.log(kade.graduate());
+
 
 /*
   TASK 6
